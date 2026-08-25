@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>GD Writer</title>
+  
+  <!-- PWA Manifest & Meta Tags -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#121212" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Dynamic Background Layer -->
+  <div id="bg-layer" class="bg-layer"></div>
+
+  <!-- App Wrapper -->
+  <div class="app-shell" id="app-shell">
+    
+    <!-- Top Navigation Header -->
+    <header class="top-nav glass-card" id="top-nav">
+      <div class="brand">
+        <span class="logo-icon">✍</span>
+        <h1>GD Writer</h1>
+      </div>
+      <div class="top-actions">
+        <label for="bg-upload-input" class="btn-icon" title="Change Background">
+          🖼️
+          <input type="file" id="bg-upload-input" accept="image/*" class="sr-only" />
+        </label>
+        <button id="btn-export-txt" class="btn-icon" title="Export as TXT">📄</button>
+        <button id="btn-export-html" class="btn-icon" title="Export as HTML">🌐</button>
+        <button id="btn-focus-toggle" class="btn-icon" title="Toggle Focus Mode">🎯</button>
+      </div>
+    </header>
+
+    <!-- Main Writing Stage -->
+    <main class="editor-container glass-card">
+      <textarea 
+        id="editor" 
+        placeholder="Start writing your thoughts, story, or notes here..." 
+        spellcheck="true"
+        autocomplete="off"
+        autocorrect="on"
+      ></textarea>
+    </main>
+
+    <!-- Floating Exit Focus Button -->
+    <button id="btn-exit-focus" class="btn-floating glass-card hidden" title="Exit Focus Mode">
+      ✕ Exit Focus
+    </button>
+
+    <!-- Bottom Controls & Stats Toolbar -->
+    <footer class="bottom-toolbar glass-card" id="bottom-toolbar">
+      <div class="controls-row">
+        <!-- Blur Control -->
+        <div class="control-item">
+          <label for="slider-blur">Blur</label>
+          <input type="range" id="slider-blur" min="0" max="25" step="1" value="8" />
+        </div>
+
+        <!-- Brightness Control -->
+        <div class="control-item">
+          <label for="slider-bright">Light</label>
+          <input type="range" id="slider-bright" min="20" max="120" step="5" value="60" />
+        </div>
+
+        <!-- Font Size Controls -->
+        <div class="control-item font-stepper">
+          <label>Font</label>
+          <div class="btn-group">
+            <button id="btn-font-dec" class="btn-pill" aria-label="Decrease Font Size">-</button>
+            <span id="font-size-indicator">18px</span>
+            <button id="btn-font-inc" class="btn-pill" aria-label="Increase Font Size">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Counters & Status -->
+      <div class="status-bar">
+        <div class="stat-group">
+          <span><b id="stat-words">0</b> words</span>
+          <span class="divider">•</span>
+          <span><b id="stat-chars">0</b> chars</span>
+        </div>
+        <div id="save-status" class="save-status">Saved</div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+  
